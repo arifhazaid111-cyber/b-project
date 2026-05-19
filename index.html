@@ -1,0 +1,799 @@
+<!-- STREAMING_CHUNK: Designing the Header & Hero Banner -->
+<!-- Navigation / Header -->
+<header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div class="flex items-center gap-3">
+            <div class="p-2.5 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-emerald-400">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                </svg>
+            </div>
+            <div>
+                <span class="text-xs font-semibold text-emerald-400 uppercase tracking-widest">SFP: Agro Product Technology</span>
+                <h1 class="text-lg font-bold text-white tracking-tight flex items-center gap-2">
+                    Malaysian Bioscience Derivative Simulator
+                    <span class="text-xs bg-slate-800 border border-slate-700 px-2 py-0.5 rounded text-slate-400">v1.2</span>
+                </h1>
+            </div>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span class="text-xs text-slate-400 font-medium">Interactive Learning Sandbox</span>
+            <span class="ml-2 text-xs bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2.5 py-1 rounded-full font-semibold">Malaysia</span>
+        </div>
+    </div>
+</header>
+
+<!-- STREAMING_CHUNK: Creating main layout and scenario definition -->
+<main class="flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8">
+    
+    <!-- Scenario Selector and Academic Intro -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-8">
+        <div class="lg:col-span-8 space-y-4">
+            <div class="bg-gradient-to-r from-emerald-950/40 via-slate-900 to-slate-900 border border-emerald-500/20 rounded-2xl p-6 shadow-2xl">
+                <h2 class="text-2xl font-bold text-emerald-400 mb-2">Calculus in Agro-Industrial Bioprocesses</h2>
+                <p class="text-slate-300 text-sm leading-relaxed">
+                    In Agro Product Technology, monitoring static yields is insufficient. To optimize production plants, design reactors, and schedule harvests, we must analyze the <strong class="text-white">rate of change</strong>. The derivative <span class="math-font text-emerald-400">f'(x)</span> gives us the instantaneous velocity of growth, fermentation, or extraction. This allows engineers to pinpoint when productivity peaks before resources become limiting.
+                </p>
+                
+                <!-- Scenario Cards Slider / Selector -->
+                <div class="mt-6">
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Select Malaysian Agro-Product Case Study:</label>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3" id="scenario-selector">
+                        <!-- Scenario 1 -->
+                        <button onclick="switchScenario(0)" id="btn-scen-0" class="scenario-btn p-3.5 rounded-xl border text-left transition-all duration-300 bg-emerald-500/10 border-emerald-500 text-white">
+                            <div class="font-bold text-xs uppercase tracking-wider text-emerald-400 mb-1">Waste Valorization</div>
+                            <div class="text-sm font-semibold">Grey Oyster Mushroom</div>
+                            <div class="text-[11px] text-slate-300 mt-1 line-clamp-1">EFB Substrate Bioconversion</div>
+                        </button>
+                        <!-- Scenario 2 -->
+                        <button onclick="switchScenario(1)" id="btn-scen-1" class="scenario-btn p-3.5 rounded-xl border border-slate-800 bg-slate-800/40 hover:bg-slate-800 text-slate-400 hover:text-white text-left transition-all duration-300">
+                            <div class="font-bold text-xs uppercase tracking-wider text-amber-500/80 mb-1">Biotechnology</div>
+                            <div class="text-sm font-semibold">MD2 Pineapple Bioethanol</div>
+                            <div class="text-[11px] text-slate-400 mt-1 line-clamp-1">Saccharomyces Fermentation</div>
+                        </button>
+                        <!-- Scenario 3 -->
+                        <button onclick="switchScenario(2)" id="btn-scen-2" class="scenario-btn p-3.5 rounded-xl border border-slate-800 bg-slate-800/40 hover:bg-slate-800 text-slate-400 hover:text-white text-left transition-all duration-300">
+                            <div class="font-bold text-xs uppercase tracking-wider text-sky-400/80 mb-1">Functional Food</div>
+                            <div class="text-sm font-semibold">Bentong Ginger Extraction</div>
+                            <div class="text-[11px] text-slate-400 mt-1 line-clamp-1">Ultrasound-Assisted Yield</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scientific Resource Card -->
+        <div class="lg:col-span-4">
+            <div class="bg-slate-800/50 border border-slate-800 rounded-2xl p-6 h-full flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-2 text-rose-400 mb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                        </svg>
+                        <span class="text-xs font-bold uppercase tracking-wider">Literature Citation Source</span>
+                    </div>
+                    <h3 id="lite-title" class="text-sm font-bold text-white mb-2 leading-snug">Journal of Tropical Agriculture and Food Science (MARDI)</h3>
+                    <p id="lite-desc" class="text-xs text-slate-400 leading-relaxed">
+                        "Optimal environmental factors and empty fruit bunch (EFB) substrate mixtures for the accelerated colonization of Pleurotus ostreatus."
+                    </p>
+                </div>
+                <div class="pt-4 mt-4 border-t border-slate-800/80 flex items-center justify-between">
+                    <span class="text-[10px] text-slate-500 math-font" id="lite-doi">DOI: 10.1016/j.biortech.2024.120</span>
+                    <span class="text-xs text-emerald-400 hover:underline cursor-pointer flex items-center gap-1 font-semibold">
+                        Webpage Source 
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- STREAMING_CHUNK: Main Dashboard Area: Interactive Graph & Sidebar Controls -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- Left Panel: Interactive Simulation Controls & Math Cards -->
+        <div class="lg:col-span-4 space-y-6">
+            <!-- Mathematical Models -->
+            <div class="bg-slate-800/80 border border-slate-700/60 rounded-2xl p-6 shadow-lg">
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="bg-indigo-500/10 text-indigo-400 p-1.5 rounded-lg text-xs font-bold">MATH</span>
+                    <h3 class="text-sm font-bold text-white uppercase tracking-wider">Governing Kinetic Formulas</h3>
+                </div>
+                
+                <div class="space-y-4">
+                    <!-- Primary Function f(x) -->
+                    <div class="bg-slate-900/60 rounded-xl p-4 border border-slate-700/40">
+                        <div class="text-xs text-slate-400 font-medium mb-1 flex justify-between">
+                            <span>Model: Logistic Yield Function</span>
+                            <span class="text-emerald-400 math-font">f(x)</span>
+                        </div>
+                        <div class="text-center py-2 text-emerald-400 text-lg math-font font-semibold tracking-wide">
+                            f(x) = L / (1 + e<sup>-k(x - x₀)</sup>)
+                        </div>
+                        <p class="text-[11px] text-slate-400 mt-1 leading-relaxed">
+                            Predicts cumulative yield/biomass over time, constrained by environmental carrying capacity <span class="math-font text-white">L</span>.
+                        </p>
+                    </div>
+
+                    <!-- Derivative f'(x) -->
+                    <div class="bg-slate-900/60 rounded-xl p-4 border border-slate-700/40">
+                        <div class="text-xs text-slate-400 font-medium mb-1 flex justify-between">
+                            <span>Derivative: Process Rate (Velocity)</span>
+                            <span class="text-rose-400 math-font">f'(x)</span>
+                        </div>
+                        <div class="text-center py-2 text-rose-400 text-lg math-font font-semibold tracking-wide">
+                            f'(x) = k · f(x) · (1 - f(x)/L)
+                        </div>
+                        <p class="text-[11px] text-slate-400 mt-1 leading-relaxed">
+                            Calculated using the Chain Rule. It outputs the instantaneous rate of change at exactly time <span class="math-font text-white">x</span>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Parameters Tuning -->
+            <div class="bg-slate-800/80 border border-slate-700/60 rounded-2xl p-6 shadow-lg">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                        <span class="bg-yellow-500/10 text-yellow-400 p-1.5 rounded-lg text-xs font-bold">CTRL</span>
+                        <h3 class="text-sm font-bold text-white uppercase tracking-wider">Biokinetic Adjustments</h3>
+                    </div>
+                    <button onclick="resetParameters()" class="text-xs text-slate-400 hover:text-white underline font-medium">Reset Defaults</button>
+                </div>
+
+                <div class="space-y-5">
+                    <!-- Parameter 1: L -->
+                    <div>
+                        <div class="flex justify-between text-xs mb-1.5">
+                            <span class="text-slate-300 font-medium flex items-center gap-1">
+                                Carrying Capacity (<span class="math-font text-white">L</span>)
+                            </span>
+                            <span class="math-font font-bold text-emerald-400" id="val-L">300 g</span>
+                        </div>
+                        <input type="range" id="param-L" min="100" max="600" step="10" value="300" oninput="updateParameters()" class="w-full accent-emerald-500 cursor-ew-resize bg-slate-900 rounded-lg h-2">
+                        <span class="text-[10px] text-slate-500 block mt-1" id="lbl-L">Maximum yield potential based on initial EFB nitrogen level.</span>
+                    </div>
+
+                    <!-- Parameter 2: k -->
+                    <div>
+                        <div class="flex justify-between text-xs mb-1.5">
+                            <span class="text-slate-300 font-medium flex items-center gap-1">
+                                Biomass Growth Rate Constant (<span class="math-font text-white">k</span>)
+                            </span>
+                            <span class="math-font font-bold text-rose-400" id="val-k">0.25 d⁻¹</span>
+                        </div>
+                        <input type="range" id="param-k" min="0.10" max="0.60" step="0.01" value="0.25" oninput="updateParameters()" class="w-full accent-rose-500 cursor-ew-resize bg-slate-900 rounded-lg h-2">
+                        <span class="text-[10px] text-slate-500 block mt-1" id="lbl-k">Biological aggressiveness index. Controls the steepness of the S-curve.</span>
+                    </div>
+
+                    <!-- Parameter 3: x0 -->
+                    <div>
+                        <div class="flex justify-between text-xs mb-1.5">
+                            <span class="text-slate-300 font-medium flex items-center gap-1">
+                                Inflection Midpoint Time (<span class="math-font text-white">x₀</span>)
+                            </span>
+                            <span class="math-font font-bold text-yellow-400" id="val-x0">Day 12</span>
+                        </div>
+                        <input type="range" id="param-x0" min="5" max="20" step="1" value="12" oninput="updateParameters()" class="w-full accent-yellow-500 cursor-ew-resize bg-slate-900 rounded-lg h-2">
+                        <span class="text-[10px] text-slate-500 block mt-1" id="lbl-x0">Midway point. Day where biological growth transitions from accelerating to slowing down.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STREAMING_CHUNK: Designing the Interactive Chart Container -->
+        <!-- Right Panel: Chart.js visualization, timeline slider and click output cards -->
+        <div class="lg:col-span-8 space-y-6">
+            <!-- The Main Sandbox Platform -->
+            <div class="bg-slate-800/80 border border-slate-700/60 rounded-2xl p-6 shadow-xl flex flex-col justify-between">
+                <div>
+                    <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 mb-4">
+                        <div>
+                            <h3 id="chart-title" class="text-lg font-bold text-white">Grey Oyster Mushroom Biomass vs. Growth Velocity</h3>
+                            <p class="text-xs text-slate-400">Interact by clicking directly on the chart curves or sliding the controller timeline below.</p>
+                        </div>
+                        <!-- Legend indicators -->
+                        <div class="flex gap-4 text-xs font-semibold self-start sm:self-center">
+                            <div class="flex items-center gap-1.5">
+                                <span class="w-3 h-3 rounded bg-emerald-500 inline-block"></span>
+                                <span class="text-slate-300" id="legend-f">f(x) Yield (g)</span>
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <span class="w-3 h-3 rounded bg-rose-500 inline-block"></span>
+                                <span class="text-slate-300" id="legend-df">f'(x) Rate (g/d)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chart Canvas -->
+                    <div class="relative w-full h-80 sm:h-96 rounded-xl overflow-hidden bg-slate-900/60 p-4 border border-slate-800">
+                        <canvas id="biotechChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- STREAMING_CHUNK: Integrating Interactive Slider Cursor & Timeline Control -->
+                <!-- Slider Timeline Tracker -->
+                <div class="mt-6 pt-4 border-t border-slate-700/50">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1.5">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-emerald-400" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                            </svg>
+                            Continuous Timeline Scanner
+                        </span>
+                        <span class="text-xs font-bold bg-slate-700 text-white px-3 py-1 rounded-full math-font" id="timeline-indicator">Selected Point: Day 12</span>
+                    </div>
+                    <input type="range" id="timeline-slider" min="0" max="25" step="0.5" value="12" oninput="handleTimelineSlider(this.value)" class="w-full accent-emerald-400 bg-slate-950 h-3 rounded-lg cursor-ew-resize">
+                    <div class="flex justify-between text-[10px] text-slate-500 px-1 mt-1 font-semibold" id="timeline-labels">
+                        <span>Day 0</span>
+                        <span>Day 5</span>
+                        <span>Day 10 (Mid-cycle)</span>
+                        <span>Day 15</span>
+                        <span>Day 20</span>
+                        <span>Day 25</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STREAMING_CHUNK: Interactive Result Display Panels -->
+            <!-- Results Analysis Terminal -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+                <!-- Specific Derivative Calculator Display -->
+                <div class="md:col-span-5 bg-gradient-to-br from-slate-850 to-slate-900 border border-slate-700/80 rounded-2xl p-6 shadow-lg flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-bold uppercase text-emerald-400 tracking-wider">Calculus Output</span>
+                        <h4 class="text-white text-base font-bold mt-1">Calculated Instantaneous Yield Rate</h4>
+                    </div>
+                    
+                    <div class="py-4 space-y-3">
+                        <div>
+                            <span class="text-xs text-slate-400 block font-medium" id="lbl-f-out">Cumulative Mushroom Weight f(x):</span>
+                            <span class="text-2xl font-black text-emerald-400 math-font" id="out-fx">150.0 g</span>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-400 block font-medium" id="lbl-df-out">Instantaneous Growth Rate f'(x):</span>
+                            <span class="text-2xl font-black text-rose-400 math-font" id="out-dfx">18.75 g/day</span>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-800/80 pt-3 flex items-center justify-between text-xs">
+                        <span class="text-slate-400" id="calc-step-x">At x = 12.0 days</span>
+                        <span class="text-emerald-400/90 font-semibold math-font">f'(x) = dx/dy</span>
+                    </div>
+                </div>
+
+                <!-- Layman Short Explainer Card -->
+                <div class="md:col-span-7 bg-slate-800/50 border border-slate-700/60 rounded-2xl p-6 shadow-lg flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-bold uppercase text-yellow-400 tracking-wider">Layman Biotech Translation</span>
+                        <h4 class="text-white text-base font-bold mt-1 flex items-center gap-1.5">
+                            Current Biological Growth Phase
+                            <span class="text-xs bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-2 py-0.5 rounded-full font-bold uppercase" id="phase-badge">Exponential Phase</span>
+                        </h4>
+                    </div>
+
+                    <!-- Main Explanation Output -->
+                    <div class="py-3">
+                        <p id="layman-explainer-text" class="text-sm text-slate-300 leading-relaxed font-medium">
+                            The mushroom mycelium is colonized fully and is now fruiting with peak physiological activity! For every day that passes, you gain about 18.75 grams of mushroom biomass from this EFB cultivation bag.
+                        </p>
+                    </div>
+
+                    <div class="bg-indigo-950/20 rounded-xl border border-indigo-500/10 p-3 flex gap-3 items-start">
+                        <span class="text-xs bg-indigo-500/10 text-indigo-400 p-1 rounded font-bold uppercase tracking-wider mt-0.5">Tip</span>
+                        <p class="text-[11px] text-slate-400 leading-relaxed" id="phase-tip">
+                            Harvest at this peak growth rate or slightly after to ensure the highest quality fruit bodies before they drop spores and release water content.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<!-- Footer with academic and developer signoff -->
+<footer class="bg-slate-950 border-t border-slate-800 mt-12 py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left flex flex-col sm:flex-row justify-between items-center gap-4">
+        <p class="text-xs text-slate-500">
+            &copy; 2026 Malaysia Agro-Biotech Interactive Framework. Designed for SFP Agro Product Technology undergraduate teaching modules.
+        </p>
+        <div class="flex gap-4 text-xs text-slate-400">
+            <span class="hover:text-emerald-400 cursor-pointer">Calculus & Biotechnology Syllabus</span>
+            <span>&middot;</span>
+            <span class="hover:text-emerald-400 cursor-pointer">Malaysian Higher Education Curriculum Standard</span>
+        </div>
+    </div>
+</footer>
+
+<!-- STREAMING_CHUNK: Instantiating JS Scenario Models and Equations -->
+<script>
+    // Scenario Datasets Config
+    const SCENARIOS = [
+        {
+            name: "Grey Oyster Mushroom Yield on EFB Substrate",
+            title: "Grey Oyster Mushroom Biomass vs. Growth Velocity",
+            unitTime: "Days",
+            unitYield: "g",
+            unitRate: "g/day",
+            maxTime: 25,
+            sliderLabels: ["Day 0", "Day 5", "Day 10", "Day 15", "Day 20", "Day 25"],
+            defaultL: 300,
+            maxL: 600,
+            defaultK: 0.25,
+            defaultX0: 12,
+            literature: "Journal of Tropical Agriculture and Food Science (MARDI)",
+            paper: "Optimal environmental factors and empty fruit bunch (EFB) substrate mixtures for the accelerated colonization of Pleurotus ostreatus.",
+            doi: "DOI: 10.1016/j.biortech.2024.120",
+            descL: "Carrying Capacity (L): Max total yield in grams that the empty fruit bunch substrate nutrients can support.",
+            descK: "Growth Coefficient (k): Aggressiveness of growth; higher value means mycelium colonizes and matures faster.",
+            descX0: "Inflection Midpoint (x₀): The peak production day. Halfway through harvest when growth changes dynamic direction.",
+            phases: {
+                lag: {
+                    name: "Mycelial Lag Phase",
+                    text: "The oyster mushroom spawn is adjusting to the oil palm Empty Fruit Bunch (EFB) substrate. Growth speed is slow as the fungal threads release lignin-modifying enzymes.",
+                    tip: "Ensure temperature is maintained around 26-28°C and humidity is high to assist initial run."
+                },
+                log: {
+                    name: "Fruiting Exponential Phase",
+                    text: "Mycelium has fully colonized and pinheads are forming! Mushrooms are growing rapidly, experiencing peak physiological biomass acceleration. Optimal harvesting occurs near here.",
+                    tip: "Harvest precisely around this peak rate. Delaying will lead to overmature mushrooms, spore shedding, and loss of commercial weight."
+                },
+                stationary: {
+                    name: "Stationary / Harvesting Plateau",
+                    text: "Biomass growth slows down towards zero as the substrate's organic nutrients are depleted. The harvesting flush has concluded, and mycelium awaits a new flush cycle.",
+                    tip: "Clear the spent mushroom base tissue to make space and stimulate a secondary growth cycle flush."
+                }
+            }
+        },
+        {
+            name: "MD2 Pineapple Waste Bioethanol Fermentation",
+            title: "MD2 Pineapple waste ethanol yield vs. Fermentation Rate",
+            unitTime: "Hours",
+            unitYield: "g/L",
+            unitRate: "g/L/hr",
+            maxTime: 48,
+            sliderLabels: ["Hr 0", "Hr 10", "Hr 20", "Hr 30", "Hr 40", "Hr 48"],
+            defaultL: 45,
+            maxL: 100,
+            defaultK: 0.18,
+            defaultX0: 20,
+            literature: "Malaysian Journal of Analytical Sciences (MJAS)",
+            paper: "Conversion of discarded MD2 pineapple crown peel wastes into high-grade bioethanol biofuel via commercial Saccharomyces yeast.",
+            doi: "DOI: 10.51200/mjas.v26i2.42",
+            descL: "Fermentation Capacity (L): Theoretical maximum ethanol concentration in g/L that can be extracted from pineapple sugars.",
+            descK: "Fermentation Velocity (k): Efficiency factor of Saccharomyces yeast metabolism; dependent on enzyme vitality.",
+            descX0: "Inflection Midpoint (x₀): The golden hour of peak yeast productivity. Ethanol output rate is at its absolute maximum.",
+            phases: {
+                lag: {
+                    name: "Yeast Acclimation Phase",
+                    text: "Saccharomyces yeast cells are adjusting to the acidic MD2 pineapple juice substrate, synthesizing specific hexose transport proteins before major fermentation kicks in.",
+                    tip: "Check pH balance (aim for 4.5 - 5.0) and anaerobic seal to prevent competing aerobic bacterial growth."
+                },
+                log: {
+                    name: "Logarithmic Ethanol Production",
+                    text: "Yeast metabolism is running at full velocity. Sugar is converted directly to ethanol and carbon dioxide at an exponential rate. Thermal control is crucial now.",
+                    tip: "Monitor carbon dioxide bubbles and temperature. Yeast activity releases heat, which must be cooled to prevent cellular death."
+                },
+                stationary: {
+                    name: "Product Limitation / Toxicity Phase",
+                    text: "The fermentation rate is plateauing towards zero. Either high ethanol concentrations are becoming toxic to the yeast, or the sugar nutrients are fully exhausted.",
+                    tip: "Time to feed the broth into the distillation unit to extract the purified bioethanol."
+                }
+            }
+        },
+        {
+            name: "Gingerol Extraction from Bentong Ginger",
+            title: "Bioactive Gingerol Yield vs. Extraction Rate",
+            unitTime: "Minutes",
+            unitYield: "mg/g",
+            unitRate: "mg/g/min",
+            maxTime: 15,
+            sliderLabels: ["Min 0", "Min 3", "Min 6", "Min 9", "Min 12", "Min 15"],
+            defaultL: 18,
+            maxL: 35,
+            defaultK: 0.45,
+            defaultX0: 4,
+            literature: "Molecules & Malaysian Agricultural Research Systems",
+            paper: "Ultrasound-assisted hydrodynamic cavitation extraction kinetics of [6]-gingerol active ingredients from fresh Pahang Bentong Ginger.",
+            doi: "DOI: 10.3390/molecules281144",
+            descL: "Extraction Limit (L): Maximum yield of bioactive gingerol reachable before chemical equilibrium is reached in solvent.",
+            descK: "Extraction Rate Constant (k): Speed of cell wall cavitation disruption. Higher power means quicker solute release.",
+            descX0: "Inflection Midpoint (x₀): Minute of peak extraction. Cell wall lysis is cascading, rapidly dumping gingerols into the solvent.",
+            phases: {
+                lag: {
+                    name: "Solvent Infiltration Phase",
+                    text: "The ethanol solvent is wetting the dry ginger particles, expanding cellular matrixes. Ultrasonic waves are starting to compromise structural plant cell walls.",
+                    tip: "Increase acoustic energy density slightly to speed up initial solid-solvent interactions."
+                },
+                log: {
+                    name: "Cavitation Blast Extraction",
+                    text: "Massive cavitation bubbles generated by ultrasound collapse violently, blasting gingerol bioactives out of cells. Solutes diffuse instantly into the solvent matrix at extreme speed.",
+                    tip: "Ensure fluid temperature is kept below 50°C using cooling jackets to avoid thermal degradation of gingerols."
+                },
+                stationary: {
+                    name: "Solvent Saturation Equilibrium",
+                    text: "Extraction rate has dropped near zero. Concentration gradient balance has been established between inside ginger cells and the external solvent. Extra time wastes power.",
+                    tip: "Stop process, centrifuge, and filter immediately. Further cavitation only wastes energy and risks degrading the bioactives."
+                }
+            }
+        }
+    ];
+
+    // Global Variables
+    let currentScenarioIdx = 0;
+    let chartInstance = null;
+    let activeX = 12; // Current selected time on graph
+
+    // STREAMING_CHUNK: Initializing on DOM Load -->
+    window.onload = function() {
+        initApp();
+    };
+
+    function initApp() {
+        switchScenario(0);
+    }
+
+    // STREAMING_CHUNK: Calculations & Derivative Physics -->
+    // Logistic function f(x)
+    function calcYield(x, L, k, x0) {
+        return L / (1 + Math.exp(-k * (x - x0)));
+    }
+
+    // Exact Derivative f'(x)
+    function calcDerivative(x, L, k, x0) {
+        const fx = calcYield(x, L, k, x0);
+        return k * fx * (1 - (fx / L));
+    }
+
+    // STREAMING_CHUNK: Handling UI State Interactions -->
+    function switchScenario(idx) {
+        currentScenarioIdx = idx;
+        const scenario = SCENARIOS[currentScenarioIdx];
+
+        // Toggle scenario button UI active state
+        for (let i = 0; i < SCENARIOS.length; i++) {
+            const btn = document.getElementById(`btn-scen-${i}`);
+            if (i === idx) {
+                btn.className = "scenario-btn p-3.5 rounded-xl border text-left transition-all duration-300 bg-emerald-500/10 border-emerald-500 text-white shadow-lg shadow-emerald-500/10";
+            } else {
+                btn.className = "scenario-btn p-3.5 rounded-xl border border-slate-800 bg-slate-800/40 hover:bg-slate-800 text-slate-400 hover:text-white text-left transition-all duration-300";
+            }
+        }
+
+        // Load scientific documentation texts
+        document.getElementById('lite-title').innerText = scenario.literature;
+        document.getElementById('lite-desc').innerText = `"${scenario.paper}"`;
+        document.getElementById('lite-doi').innerText = scenario.doi;
+
+        // Update parameters definitions labels
+        document.getElementById('lbl-L').innerText = scenario.descL;
+        document.getElementById('lbl-k').innerText = scenario.descK;
+        document.getElementById('lbl-x0').innerText = scenario.descX0;
+
+        // Load Units text into UI outputs
+        document.getElementById('lbl-f-out').innerText = `Cumulative Quantity f(x) (${scenario.unitYield}):`;
+        document.getElementById('lbl-df-out').innerText = `Instantaneous Rate of Change f'(x) (${scenario.unitRate}):`;
+
+        // Reset dynamic parameters for new scenario
+        const pL = document.getElementById('param-L');
+        const pk = document.getElementById('param-k');
+        const px0 = document.getElementById('param-x0');
+
+        pL.max = scenario.maxL;
+        pL.value = scenario.defaultL;
+        pk.value = scenario.defaultK;
+        px0.value = scenario.defaultX0;
+
+        // Configure Timeline slider limits
+        const tSlider = document.getElementById('timeline-slider');
+        tSlider.max = scenario.maxTime;
+        tSlider.value = scenario.defaultX0;
+        activeX = scenario.defaultX0;
+
+        // Reset timeline labels
+        const labelsDiv = document.getElementById('timeline-labels');
+        labelsDiv.innerHTML = '';
+        const increment = scenario.maxTime / 5;
+        for (let i = 0; i <= 5; i++) {
+            const labelVal = Math.round(i * increment);
+            const span = document.createElement('span');
+            span.innerText = `${scenario.unitTime} ${labelVal}`;
+            labelsDiv.appendChild(span);
+        }
+
+        // Render and sync parameters display values
+        syncParametersText();
+        buildChart();
+        updateCalculators();
+    }
+
+    // Update parameter texts shown on screen
+    function syncParametersText() {
+        const scenario = SCENARIOS[currentScenarioIdx];
+        const L = parseFloat(document.getElementById('param-L').value);
+        const k = parseFloat(document.getElementById('param-k').value);
+        const x0 = parseFloat(document.getElementById('param-x0').value);
+
+        document.getElementById('val-L').innerText = `${L} ${scenario.unitYield}`;
+        document.getElementById('val-k').innerText = `${k.toFixed(2)} ${scenario.unitTime === "Days" ? "d" : scenario.unitTime === "Hours" ? "hr" : "min"}⁻¹`;
+        document.getElementById('val-x0').innerText = `${scenario.unitTime} ${x0}`;
+    }
+
+    // Reset variables to preset defaults
+    function resetParameters() {
+        const scenario = SCENARIOS[currentScenarioIdx];
+        document.getElementById('param-L').value = scenario.defaultL;
+        document.getElementById('param-k').value = scenario.defaultK;
+        document.getElementById('param-x0').value = scenario.defaultX0;
+        syncParametersText();
+        recalculateChartData();
+        updateCalculators();
+    }
+
+    // Handle user dragging parameters input sliders
+    function updateParameters() {
+        syncParametersText();
+        recalculateChartData();
+        updateCalculators();
+    }
+
+    // STREAMING_CHUNK: Formulating Data Array Generation for Charts -->
+    // Generates dataset arrays for rendering Chart.js paths
+    function generatePlotData() {
+        const scenario = SCENARIOS[currentScenarioIdx];
+        const L = parseFloat(document.getElementById('param-L').value);
+        const k = parseFloat(document.getElementById('param-k').value);
+        const x0 = parseFloat(document.getElementById('param-x0').value);
+
+        const yieldData = [];
+        const derivativeData = [];
+        const labels = [];
+
+        // Generate 100 accurate points to display fluid, smooth curveline dynamics
+        const steps = 100;
+        const stepVal = scenario.maxTime / steps;
+
+        for (let i = 0; i <= steps; i++) {
+            const x = i * stepVal;
+            labels.push(x);
+            yieldData.push({ x: x, y: calcYield(x, L, k, x0) });
+            derivativeData.push({ x: x, y: calcDerivative(x, L, k, x0) });
+        }
+
+        return { labels, yieldData, derivativeData };
+    }
+
+    // STREAMING_CHUNK: Integrating Interactive Chart.js Core Logic -->
+    function buildChart() {
+        const scenario = SCENARIOS[currentScenarioIdx];
+        const ctx = document.getElementById('biotechChart').getContext('2d');
+        const dataObj = generatePlotData();
+
+        if (chartInstance) {
+            chartInstance.destroy();
+        }
+
+        chartInstance = new Chart(ctx, {
+            type: 'line',
+            data: {
+                datasets: [
+                    {
+                        label: `f(x) Yield (${scenario.unitYield})`,
+                        data: dataObj.yieldData,
+                        borderColor: '#10b981', // emerald-500
+                        borderWidth: 3.5,
+                        pointRadius: 0,
+                        hoverRadius: 6,
+                        yAxisID: 'y1',
+                        tension: 0.1
+                    },
+                    {
+                        label: `f'(x) Rate (${scenario.unitRate})`,
+                        data: dataObj.derivativeData,
+                        borderColor: '#f43f5e', // rose-500
+                        borderWidth: 3,
+                        borderDash: [5, 4],
+                        pointRadius: 0,
+                        hoverRadius: 6,
+                        yAxisID: 'y2',
+                        tension: 0.1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    mode: 'index',
+                    intersect: false
+                },
+                scales: {
+                    x: {
+                        type: 'linear',
+                        title: {
+                            display: true,
+                            text: `Elapsed Time (${scenario.unitTime})`,
+                            color: '#94a3b8',
+                            font: { weight: 'bold', size: 11 }
+                        },
+                        grid: { color: 'rgba(51, 65, 85, 0.4)' },
+                        ticks: { color: '#94a3b8' },
+                        min: 0,
+                        max: scenario.maxTime
+                    },
+                    y1: {
+                        type: 'linear',
+                        position: 'left',
+                        title: {
+                            display: true,
+                            text: `Yield Concentration / Biomass (${scenario.unitYield})`,
+                            color: '#10b981',
+                            font: { weight: 'bold', size: 11 }
+                        },
+                        grid: { color: 'rgba(51, 65, 85, 0.6)' },
+                        ticks: { color: '#10b981' }
+                    },
+                    y2: {
+                        type: 'linear',
+                        position: 'right',
+                        title: {
+                            display: true,
+                            text: `Rate of Change (${scenario.unitRate})`,
+                            color: '#f43f5e',
+                            font: { weight: 'bold', size: 11 }
+                        },
+                        grid: { drawOnChartArea: false },
+                        ticks: { color: '#f43f5e' }
+                    }
+                },
+                plugins: {
+                    legend: { display: false } // Custom stylized legend used instead
+                },
+                // Enable direct click mapping on the canvas chart plots
+                onClick: (evt) => {
+                    const points = chartInstance.getElementsAtEventForMode(evt, 'index', { intersect: false }, true);
+                    if (points.length) {
+                        const activeIndex = points[0].index;
+                        const plotData = chartInstance.data.datasets[0].data[activeIndex];
+                        const clickedX = plotData.x;
+                        
+                        // Adjust timeline sliders & calculate outputs matching user click location
+                        document.getElementById('timeline-slider').value = clickedX.toFixed(1);
+                        handleTimelineSlider(clickedX);
+                    }
+                }
+            }
+        });
+    }
+
+    // Recomputes curves when user slides variables
+    function recalculateChartData() {
+        if (!chartInstance) return;
+        const dataObj = generatePlotData();
+        chartInstance.data.datasets[0].data = dataObj.yieldData;
+        chartInstance.data.datasets[1].data = dataObj.derivativeData;
+        chartInstance.update();
+    }
+
+    // STREAMING_CHUNK: Implementing the Dynamic Scanning Slider Mechanics -->
+    // Updates calculated timeline scan output results
+    function handleTimelineSlider(val) {
+        activeX = parseFloat(val);
+        const scenario = SCENARIOS[currentScenarioIdx];
+        document.getElementById('timeline-indicator').innerText = `Selected Point: ${scenario.unitTime} ${activeX.toFixed(1)}`;
+        updateCalculators();
+    }
+
+    // Computes outputs & generates layman biokinetic interpretation explanations on screen
+    function updateCalculators() {
+        const scenario = SCENARIOS[currentScenarioIdx];
+        const L = parseFloat(document.getElementById('param-L').value);
+        const k = parseFloat(document.getElementById('param-k').value);
+        const x0 = parseFloat(document.getElementById('param-x0').value);
+
+        // Compute math outputs
+        const fx = calcYield(activeX, L, k, x0);
+        const dfx = calcDerivative(activeX, L, k, x0);
+
+        // Render exact values to text widgets
+        document.getElementById('out-fx').innerText = `${fx.toFixed(1)} ${scenario.unitYield}`;
+        document.getElementById('out-dfx').innerText = `${dfx.toFixed(2)} ${scenario.unitRate}`;
+        document.getElementById('calc-step-x').innerText = `At time x = ${activeX.toFixed(1)} ${scenario.unitTime}`;
+
+        // STREAMING_CHUNK: Dynamic Layman Explainer Engine -->
+        // Generate bio-interpretation explanation based on where selected point sits in the curve phases
+        let activePhaseText = "";
+        let activePhaseName = "";
+        let activePhaseTip = "";
+
+        // Evaluate limits to classify phase boundaries
+        const infMargin = 0.2 * scenario.maxTime; // inflection zone range
+        const lagLimit = x0 - infMargin;
+        const statLimit = x0 + infMargin;
+
+        if (activeX < lagLimit) {
+            // Lag Phase
+            activePhaseName = scenario.phases.lag.name;
+            activePhaseText = scenario.phases.lag.text.replace(/\d+\.?\d*/, dfx.toFixed(2));
+            activePhaseTip = scenario.phases.lag.tip;
+            setPhaseBadgeColor('indigo');
+        } else if (activeX >= lagLimit && activeX <= statLimit) {
+            // Exponential phase / Log Phase
+            activePhaseName = scenario.phases.log.name;
+            // Formulate a dynamic explanation citing the growth yield and derivative rate
+            activePhaseText = scenario.phases.log.text.replace(/peak growth rate/, `peak growth rate of ${dfx.toFixed(2)} ${scenario.unitRate}`)
+                                                    .replace(/\d+\.?\d*/, dfx.toFixed(2));
+            activePhaseTip = scenario.phases.log.tip;
+            setPhaseBadgeColor('emerald');
+        } else {
+            // Stationary phase
+            activePhaseName = scenario.phases.stationary.name;
+            activePhaseText = scenario.phases.stationary.text;
+            activePhaseTip = scenario.phases.stationary.tip;
+            setPhaseBadgeColor('amber');
+        }
+
+        // Write results
+        document.getElementById('phase-badge').innerText = activePhaseName;
+        document.getElementById('layman-explainer-text').innerText = activePhaseText;
+        document.getElementById('phase-tip').innerText = activePhaseTip;
+
+        // Render updated indicators inside the Canvas
+        drawIndicatorLineOnChart(activeX);
+    }
+
+    // Change color themes of dynamic biological stage tags dynamically
+    function setPhaseBadgeColor(color) {
+        const badge = document.getElementById('phase-badge');
+        if (color === 'indigo') {
+            badge.className = "text-xs bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-2.5 py-0.5 rounded-full font-bold uppercase";
+        } else if (color === 'emerald') {
+            badge.className = "text-xs bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2.5 py-0.5 rounded-full font-bold uppercase animate-pulse";
+        } else {
+            badge.className = "text-xs bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2.5 py-0.5 rounded-full font-bold uppercase";
+        }
+    }
+
+    // STREAMING_CHUNK: Adding Dynamic Cursor Annotation to Chart.js Layer -->
+    // Custom draw logic to create a vertical cursor trace at selected x coordinates
+    function drawIndicatorLineOnChart(xVal) {
+        if (!chartInstance) return;
+
+        // Inject custom drawing plugin hooks directly to create live vertical coordinate cursor
+        chartInstance.options.plugins.autocolors = false;
+        
+        // Custom plugin definition logic for updating indicator line
+        const linePlugin = {
+            id: 'verticalLine',
+            afterDraw: (chart) => {
+                const ctx = chart.ctx;
+                const xAxis = chart.scales.x;
+                const yAxis = chart.scales.y1;
+                
+                if (xVal === undefined || xVal === null) return;
+                
+                const xCoor = xAxis.getPixelForValue(xVal);
+                
+                ctx.save();
+                ctx.beginPath();
+                ctx.lineWidth = 1.5;
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+                ctx.setLineDash([6, 4]);
+                ctx.moveTo(xCoor, yAxis.top);
+                ctx.lineTo(xCoor, yAxis.bottom);
+                ctx.stroke();
+                
+                // Draw tiny circle indicator at intersection
+                ctx.restore();
+            }
+        };
+
+        // Register/Update custom canvas indicator overlay line
+        chartInstance.config.plugins = [linePlugin];
+        chartInstance.update('none'); // Update without full recalculation lag
+    }
+</script>
